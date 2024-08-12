@@ -37,16 +37,16 @@ print(studentList[-1])  # 서장훈
 print(studentList[-3])  # 강호동
 print(studentList[-4])  # 유재석
 
-# 슬라이싱 : 인덱싱 틀 이용한 요소들 추출, [시작 인덱스 : 끝인덱스 : 증감단위]
-print(studentList[0 : 2])           # ['유재석', '강호동'], 0~2 미만
-print(studentList[0 : 3])           # ['유재석', '강호동', '신동엽'], 0~3 미만
-print(studentList[ : 4])            # ['유재석', '강호동', '신동엽', '서장훈'], 생략시 0 ~ 4 미만
-print(studentList[2: ])             #
-print(studentList[ : ])             #
-print(studentList[0 : 4 : 1])       #
-print(studentList[0 : 4 : 2])       #
-print(studentList[-1 : -5 : -1])    #
-print(studentList[-1 : -5 : -2])    #
+# 슬라이싱 : 인덱싱 를 이용한 요소들 추출 , [ 시작인덱스(포함0) : 끝인덱스(포함x) : 증감단위 ]
+print( studentList[ 0 : 2 ] )           # ['유재석', '강호동'] , 0 ~ 2미만
+print( studentList[ 0 : 3 ] )           # ['유재석', '강호동', '신동엽'] , 0~3미만
+print( studentList[ : 4 ] )             # ['유재석', '강호동', '신동엽', '서장훈'] , 생략시 0 ~ 4미만
+print( studentList[ 2 : ] )             # ['신동엽', '서장훈'] , 2 ~ 생략시마지막인덱스 까지
+print( studentList[ : ] )               # ['유재석', '강호동', '신동엽', '서장훈'] , 생략시 0 ~ 마지막 인덱스
+print( studentList[ 0 : 4 : 1 ] )       # ['유재석', '강호동', '신동엽', '서장훈']
+print( studentList[ 0 : 4 : 2 ] )       # ['유재석', '신동엽']
+print( studentList[ -1 : -5 : -1 ] )    # ['서장훈', '신동엽', '강호동', '유재석']
+print( studentList[ -1 : -5 : -2 ] )    # ['서장훈', '강호동']
 
 
 # (3) 리스트 연산
@@ -107,8 +107,10 @@ b = [4, 5]
 a.extend(b)
 print(a)                # [1, 2, 3, 1, 4, 5]
 
-# 8. .sort() : fltmxmdml dythemfdfm dhfmacktns wjdfuf
+# 8. .sort()                : 리스트의 요소들을 오름차순 정렬
 a.sort()
-
-# 9. 
+print( a )              # [1, 1, 2, 3, 4, 5]
+# 9. .reverse()              : 리스트의 요소들을 내림차순 정렬 , sort() -> reverse()
+a.reverse()
+print( a )              # [5, 4, 3, 2, 1, 1]
 
