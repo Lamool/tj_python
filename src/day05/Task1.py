@@ -6,6 +6,8 @@
 #           4. 삭제할 이름을 입력 받아 존재하면 삭제
 # [조건3] names 변수 외 추가적인 전역 변수 생성 불가능
 
+# 하나의 변수에 여러 가지 정보 # 1. JSON(몇 가지 필드를 KEY로 구분) 2. CSV(몇 가지 필드를 쉼표(,)로 구분), 주로 문자열 타입 사용
+
 names = ""  # 여러 개 name들을 저장하는 문자열 변수
 
 # 1. 이름을 입력 받아 여러 명의 이름을 저장하는 함수
@@ -64,7 +66,7 @@ def nameDelete() :
 
 
 while True :    # 무한루프
-    ch = int(input("1.create 2.read 3.update 4.delete : "))
+    ch = int(input("1.create 2.read 3.update 4.delete : "))     # input으로 입력받은 값 문자열이기에 int형으로 변환
     if ch == 1 :
         nameCreate()
     elif ch == 2 :
@@ -73,3 +75,10 @@ while True :    # 무한루프
         nameUpdate()
     elif ch == 4 :
         nameDelete()
+
+
+'''
+    for (nume in namessplit(',') :  # 문자열내, 쉼표 기준으로 분해
+        print(name
+    return
+'''
