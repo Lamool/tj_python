@@ -1,27 +1,20 @@
-# day06 > Task3.py
-# 객체/리스트 활용 , p.190 ~ p.207
-# [조건1] : 각 함수 들을 구현 해서 프로그램 완성하기
-# [조건2] :  1. 한 명의 name, age를 입력받아 저장합니다.
-#           2. 저장된 객체들을 name, age를 모두 출력 합니다.
-#           3. 수정할 이름을 입력받아 존재하면 새로운 name, age를 입력받고 수정 합니다.
-#           4. 삭제할 이름을 입력받아 존재하면 삭제 합니다.
-# [조건3] : names 변수 외 추가적인 전역 변수 생성 불가능합니다.
-# 제출 : git에 commit 후 카톡방에 해당 과제가 있는 링크 제출
+# 다른 파일의 클래스 가져오기
+from User import User   # User 클래스 가져오기
 
 names = [ ] # 샘플 데이터
 
-class nameAge :
-    def __init__ (self, name, age) :
-        self.name1 = name
-        self.age1 = age
+# class nameAge :
+#     def __init__ (self, name, age) :
+#         self.name1 = name
+#         self.age1 = age
 
 # 1. 한 명의 name, age를 입력받아 저장하는 함수
 def nameCreate( ) :
     global names
     inputName = input('이름을 입력해주세요 : ')
     inputAge = int(input('나이를 입력해주세요 : '))
-    var1 = nameAge(inputName, inputAge)
-    varF = f'{var1.name1},{var1.age1}'
+    var1 = User(inputName, inputAge)
+    varF = f'{var1.name},{var1.age}'
     names.append(varF)
     print('저장되었습니다')
     return
@@ -50,8 +43,8 @@ def nameUpdate(  ) :
         # print(names.index(f'{inputName},'))
         newName = input('새로운 이름을 입력해주세요 : ')
         newAge = int(input('새로운 나이를 입력해주세요 : '))
-        var1 = nameAge(newName, newAge)         # 객체 생성
-        varF = f'{var1.name1},{var1.age1}'
+        var1 = User(newName, newAge)         # 객체 생성
+        varF = f'{var1.name},{var1.age}'
         index = names.index(save)               # 수정하고자 하는 요소의 인덱스 찾기
         # print(save)
         names.insert(index, varF)               # 수정하고자 하는 요소의 인덱스에 값 추가
@@ -87,10 +80,6 @@ def nameDelete( ) :
         print('삭제하고자 하는 이름이 존재하지 않습니다')
 
     return
-
-# 해당 파일을 다른 파일에서 호출했을 때 호출 되지 않는 구역
-    # 해당 파일을 직접 실행할 때는 실행되는 구역
-    # 해당 파일을 다른 파일에서 호출 할 때  실행되지 않는 구역 [모듈]
 
 if __name__ == "__main__" :
     while True :
