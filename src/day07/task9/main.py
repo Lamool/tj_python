@@ -16,29 +16,27 @@
 
 from region import Region, malePercent, femalePercent
 
-
-
 if __name__ == "__main__" :
     print('--start--')
 
     data = []
 
-    # 1.읽기 모드 파일 객체
+    # 1. 읽기 모드 파일 객체
     f = open("population.txt", 'r', encoding='utf-8')
 
     # 2. 읽어오기
     population = []       # 읽어온 내용들을 저장할 리스트
     population = f.read()
-    print(population)
+    # print(population)
 
     rows = population.split("\n")     # 행 구분
-    print(rows)
+    # print(rows)
 
     for row in rows :
         if row :    # 만약에 데이터가 존재한다면
             cols = row.split(',')
-            print(cols)
-            print(cols[0])
+            # print(cols)
+            # print(cols[0])
             region = Region(cols[0], cols[1], cols[2], cols[3], cols[4])
             data.append(region)
     f.close()
@@ -53,7 +51,9 @@ if __name__ == "__main__" :
             mPercent = malePercent(int(a.totalNum), int(a.maleNum))
             fPercent = femalePercent(int(a.totalNum), int(a.femaleNum))
             print(f'{a.dongName}, {a.totalNum}, {a.maleNum}, {a.femaleNum}, {a.householdsNum}, {mPercent}, {fPercent}')
-        count += 1
+            count += 1
+        except Exception as e :
+            print(print(f'{a.dongName}, {a.totalNum}, {a.maleNum}, {a.femaleNum}, {a.householdsNum}'))
 
 
 '''
