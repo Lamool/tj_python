@@ -23,7 +23,8 @@ def qooqoo_store(result) :
         for row in tbody.select('tr') :
             # print(row)
             tds = row.select('td')
-            if num % 2 == 0 :
+
+            #if num % 2 == 0 :
                 # print(tds)
                 # print('----------------------------------')
                 # print(tds[1])
@@ -31,7 +32,7 @@ def qooqoo_store(result) :
                 # print(tds[1].find('div', attrs={'class' : 'td-subject ellipsis'}).text)
                 # print('----------------------------------')
                 # print(tds[1].findAll('a')[1].string)
-
+                if len(tds) <= 1 : continue
                 print(tds)
                 print('----------------------------------')
                 print(tds[1])
