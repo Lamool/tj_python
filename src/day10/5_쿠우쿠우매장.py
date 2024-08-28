@@ -24,7 +24,7 @@ def qooqoo_store(result) :
             # print(row)
             tds = row.select('td')
 
-            #if num % 2 == 0 :
+            #if num % 2 == 0 :  num이 짝수일 때만 result에 넣도록 하려 했는데 이렇게 하면 안 된다고
                 # print(tds)
                 # print('----------------------------------')
                 # print(tds[1])
@@ -32,19 +32,23 @@ def qooqoo_store(result) :
                 # print(tds[1].find('div', attrs={'class' : 'td-subject ellipsis'}).text)
                 # print('----------------------------------')
                 # print(tds[1].findAll('a')[1].string)
-                if len(tds) <= 1 : continue
-                print(tds)
-                print('----------------------------------')
-                print(tds[1])
-                print('----------------------------------')
-                print(tds[2].findAll('a')[0].string)    # 공백제거 해야 함 strip() 함수
-                store_num = tds[0].string;         print(tds[0].string)     # 번호
-                store_name = tds[1].findAll('a')[0].string.strip() + tds[1].findAll('a')[1].string.strip();         print(store_name)    # 매장명
-                store_phone = tds[2].findAll('a')[0].string;         print(tds[2].findAll('a')[0].string)    # 연락처
-                store_address = tds[3].findAll('a')[0].string;         print(tds[3].findAll('a')[0].string)    # 주소
-                store_time = tds[4].findAll('a')[0].string;         print(tds[4].findAll('a')[0].string)    # 영업시간
-
-            num += 1
+            if len(tds) <= 1: continue
+            print(tds)
+            print('----------------------------------')
+            print(tds[1])
+            print('----------------------------------')
+            print(tds[2].findAll('a')[0].string)  # 공백제거 해야 함 strip() 함수
+            store_num = tds[0].string;
+            print(tds[0].string)  # 번호
+            store_name = tds[1].findAll('a')[0].string.strip() + tds[1].findAll('a')[1].string.strip();
+            print(store_name)  # 매장명
+            store_phone = tds[2].findAll('a')[0].string;
+            print(tds[2].findAll('a')[0].string)  # 연락처
+            store_address = tds[3].findAll('a')[0].string;
+            print(tds[3].findAll('a')[0].string)  # 주소
+            store_time = tds[4].findAll('a')[0].string;
+            print(tds[4].findAll('a')[0].string)  # 영업시간
+            # num += 1
 
 
 
