@@ -21,3 +21,72 @@
             - 4차원 텐서 # 4차원리스트[[[[ ]]]] # 4랭크 # 4차수 # 네 방향 # X , Y , Z , W # ( 축1,축2,축3,축4 )
 '''
 
+import tensorflow as tf # 텐서플로 모듈 호출
+
+# [1] 스칼라
+a = tf.constant( 5 ) # 스칼라 정의
+print( a )              # tf.Tensor(5, shape=(), dtype=int32)
+print( tf.rank(a) )     # tf.Tensor(0, shape=(), dtype=int32)
+print( a.numpy() )      # 5
+print( tf.rank(a).numpy() ) # 0
+
+# [2] 벡터
+a = tf.constant( [ 5 , 10 , 15 ] ) # 벡터 정의
+print( a )              # tf.Tensor( [ 5 10 15] , shape=(3,), dtype=int32)
+print( tf.rank(a) )     # tf.Tensor(1, shape=(), dtype=int32)
+print( a.numpy() )      # [ 5 10 15]
+print( tf.rank(a).numpy() ) # 1
+
+# [3] 행렬
+a = tf.constant( [ [5,10],[15,20] ] ) # 행렬 정의
+print( a )              # tf.Tensor( [[ 5 10] [15 20]], shape=( 2 , 2), dtype=int32)
+print( tf.rank(a) )     # tf.Tensor(2, shape=(), dtype=int32)
+print( a.numpy() )      # [[ 5 10][15 20]]
+print( tf.rank(a).numpy() ) # 2
+
+# [4] 고차원 텐서
+# 1. 2차원 텐서 만들기
+mat1 = [ [1,2,3,4] , [5,6,7,8] ] # 2차원 리스트
+mat2 = [ [9,10,11,12] , [13,14,15,16] ] # 행 = 2개 , 열 = 4개
+mat3 = [ [17,18,19,20] , [21,22,23,24] ] # ( 2 , 4 )
+
+# 2. 같은 축 방향 으로 2차원 텐서를 나열하기  => 3차원 텐서  # [ mat1 , mat2 , mat3 ]
+tensor1 = tf.constant( [ mat1 , mat2 , mat3 ] )  # 3개의 리스트를 하나의 리스트로 감싼다.
+
+# 3. 텐서 확인 , 랭크 확인
+print( tensor1 ) # shape=(3, 2, 4), dtype=int32) # ( 높이=3 , 행=2 , 열=4 )
+print( tf.rank( tensor1 ) ) # tf.Tensor(3, shape=(), dtype=int32)
+
+# 4. 다른 방법으로 만들기
+tensor2 = tf.stack( [ mat1 , mat2 , mat3 ] ) # stack() 쌓다 뜻 # 2차원리스트 3개를 쌓다.
+print( tensor2 ) # shape=(3, 2, 4), dtype=int32) # ( 높이=3 , 행=2 , 열=4 )
+print( tf.rank( tensor2 ) ) # tf.Tensor(3, shape=(), dtype=int32)
+
+# 5. 벡터로 3차원 만들기
+vec1 = [ 1 , 2 , 3 , 4 ];vec2 = [ 5 , 6 , 7 , 8 ];vec3 = [ 9 , 10 , 11 , 12 ]
+vec4 = [ 13 , 14 , 15 , 16 ];vec5 = [ 17 , 18 , 19 , 20 ];vec6 = [ 21 , 22 , 23 , 24 ]
+
+# 6. 3차원 텐서 만들기 #    [ [] , [] , [] ] # 벡터(6개) (4,) -> 행렬(3개) (2,4) -> 3차원텐서(1개) (3,2,4)
+tensor3 = tf.constant( [ [ vec1,vec2] , [vec3,vec4] , [vec5,vec6] ] )
+print( tensor3 ) # shape=(3, 2, 4), dtype=int32) # ( 높이=3 , 행=2 , 열=4 )
+print( tf.rank( tensor3 ) ) # tf.Tensor(3, shape=(), dtype=int32)
+
+# 7. 4차원 텐서 만들기 # [ 3차원리스트 , 3차원리스트 ] # ( 2, 3 ,2 ,4)
+tensor4 = tf.stack( [ tensor1 , tensor2 ] )
+print( tensor4 ) # shape=(2, 3, 2, 4), dtype=int32) # ( 축1 = 2 , 축2 = 3 , 축3 = 2 , 축4 = 4 )
+print( tf.rank( tensor4 ) ) # tf.Tensor(4, shape=(), dtype=int32)
+
+'''
+# 벡터 4개 
+arr1 = [] # 벡터 # 리스트
+arr2 = [] # 벡터 # 리스트
+arr3 = [] # 벡터 # 리스트
+arr4 = [] # 벡터 # 리스트
+# 행렬 
+arr5 = [ arr1 , arr2 ]      # [ 벡터 , 벡터 ] = 2차원리스트
+arr6 = [ arr3 , arr4 ]      # [ 행 , 열 ] = 2차원리스트
+# 고차원텐서 
+tensor = [ arr5 , arr6 ]    # [ 행렬 , 행렬 ] = 3차원리스트  
+'''
+
+
