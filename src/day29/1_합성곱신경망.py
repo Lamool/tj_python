@@ -111,8 +111,46 @@ print(tf.argmax(model.predict(x_valid_in)[0]))     # 독립변수 # 테스트용
 # tf.Tensor(7, shape=(), dtype=int64)
 
 
+# 모델의 구조
+print(model.summary())
+
+# 입력 텐서 형태
+print(model.inputs)     # 책에는 model.input 이거지만 model.inputs s붙인 이걸로 하기
+
+# 출력 텐서 형태
+print(model.outputs)
+
+# 모델의 전체 레이어
+print(model.layers)
+
+# 첫 번째 레이어 선택
+print(model.layers[0])
+
+# 첫 번째 레이어 입력 텐서
+print(model.layers[0].input)
+
+# 첫 번째 레이어 출력 텐서
+print(model.layers[0].output)
+
+# 첫 번째 레이어 가중치
+print(model.layers[0].weights)
+
+# 첫 번째 레이어 커널 가중치      # 커널(필터) 행렬의 가중치
+print(model.layers[0].kernel)
+
+# 첫 번째 레이어 bias 가중치     # 상수항 # y = ax + b(상수항)
+print(model.layers[0].bias)
+
+# 레이어 이름 사용하여 레이어 선택
+print(model.gets_layer('conv'))
 
 
+# 합성곱 시각화 # 합성곱 결과인 특성맵 시각화
+activator = tf.keras.Model(inputs = model.inputs, # input  => inputs # 기존 모델의 입력을 사용한다.
+                            outputs = layer.ooutput)
+# 파이썬 컴프리헨션 : [ f표현식 or 반복변수 in 리스트/range() ]
+
+# 폴링 시각화 # 폴링 결과를 시각화
 
 
 
