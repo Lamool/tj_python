@@ -69,5 +69,9 @@ print(tf.argmax(result[0]).numpy())     # 가장 높은 확률을 가진 종속�
 # 3. 레이어 추가했더니 예측값 5
 
 ########################## 외부 '자동차' 이미지의 예측
-
+img = cv2.imread('car.png')
+img = cv2.resize(img , dsize=( 32 , 32))
+img = img / 255.0
+result = model.predict(img[tf.newaxis, ... ])     # ( 32 , 32 , 3 ) --> ( 1 , 32 , 32 , 3 )
+print(tf.argmax(result[0]).numpy())              # 가장 높은 확률을 가진 종속변수 # 1
 
